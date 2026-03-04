@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+<body>
+<header>
+    <nav>
+        <a href="{% url 'greeting' %}">Головна</a>
+        <a href="{% url 'greeting' %}">Дописи</a>
+        <a href="{% url 'greeting' %}">Торгівля</a>
+    </nav>
+</header>
+<div class = "content-div">
+    {% block content %}
+    {% endblock content %}  
+</div>
+<footer>
+    <div class = 'contacts-div'>
+        <h2>Ivan Diachko</h2>
+        <div class = "tel-div">
+            <h2>Phone number: </h2>
+            <a href="tel:+380604238034">+380604238034</a>
+        </div>
+        <div class = "email-div">
+            <h2>Email: </h2>
+            <a href="mailto:notmy3mail@gmail.com">notmy3mail@gmail.com</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
