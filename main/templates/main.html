@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Головна{% endblock title %}
+{% block content %}
+    <aside class="aside">
+        <div class="aside-div">
+            <h2>Погода:</h2>
+            <hr>
+            {% if weather %}
+            <div class="current-weather">
+                <img src="http://openweathermap.org/img/wn/{{ weather.current_icon }}@2x.png" alt="weather">
+                <span class="main-temp">{{ weather.current_temp }}°C</span>
+                <p>{{ weather.current_desc|capfirst }}</p>
+            </div>
+            <hr>
+            <div>
+                <h3>Прогноз погоди:</h3>
+                {% for hour in weather.hourly %}
+                    <div class="hour-row" style="display: flex; align-items: center; justify-content: space-between;">
+                        <strong>{{ hour.time }}</strong>
+                        <img src="http://openweathermap.org/img/wn/{{ hour.icon }}.png" width="35">
+                        <span>{{ hour.temp }}°C</span>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        
+    </aside>
+    <main>
+        <div class = "main-div">
+            <h1>Новини нашого ЖК</h1>
+            <div class = "news-list">
+                {% for article in news %}
+                <article class="new-article">
+                    <h2>{{article.title}}</h2>
+                    <h3>{{article.date}}</h2>
+                </article>
+                <hr>
+                {% empty %}
+                <p>Немає новин...</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    <aside class="aside">
+        <div class = "aside-div">
+            <h2>Іменинники</h2>
+        <hr>
+        {% for person in birthdays %}
+            <div class="birthday-card">
+                <img src="{{ person.avatar.url }}" width="40">
+                <span>{{ person.user.first_name }} {{ person.user.last_name }}</span>
+            </div>
+            <hr>
+        {% empty %}
+            <p>Сьогодні іменинників немає.</p>
+        {% endfor %}
+        </div>
+    </aside>
+{% endblock content %}
