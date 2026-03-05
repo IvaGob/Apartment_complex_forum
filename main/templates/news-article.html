@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Новина{% endblock title %}
+{% block content %}
+<div>
+    <h1>{{article.title}}</h1>
+    <h4>{{article.date}}</h4>
+    <hr>
+    <h2>{{article.text}}</h2>
+</div>
+{% endblock content %}

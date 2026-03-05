@@ -3,9 +3,15 @@ from datetime import date, datetime
 
 from django.shortcuts import render
 import requests
-
+from django.views.generic import DetailView
 from main.models import News
 from django.core.paginator import Paginator
+
+
+class NewsDetail(DetailView):
+    model = News
+    template_name = 'news-article.html'
+    context_object_name = 'article'
 
 # Create your views here.
 def index(request):

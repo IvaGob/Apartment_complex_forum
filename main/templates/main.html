@@ -33,7 +33,7 @@
             <div class = "news-list">
                 {% for article in news %}
                 <article class="new-article">
-                    <h2>{{article.title}}</h2>
+                    <a href="{% url 'article_detail' pk=article.pk %}" style="font-size: 36px; text-decoration: none; color: black; :hover{ color: white;}">{{article.title}}</a>
                     <h3>{{article.date}}</h2>
                 </article>
                 <hr>
